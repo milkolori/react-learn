@@ -1,0 +1,65 @@
+table {
+    width: 100%;
+    border: solid 1px gray;
+    border-spacing: 0;
+}
+
+th {
+    text-align: left;
+}
+
+th {
+    background-color: gray;
+    border-bottom: solid 1px gray;
+}
+
+th, td {
+    line-height: 2rem;
+    padding: .5rem;
+}
+
+th.action-col, td.action-col {
+    text-align: right;
+}
+
+form label {
+    display: block;
+    padding: .5rem;
+}
+
+form label span {
+    width: 5rem;
+    display: inline-block;
+    text-align: right;
+    margin-right: 1rem;
+}
+
+form label input {
+    padding: .2rem .1rem;
+    width: 20rem;
+}
+
+form label select {
+    padding: .2rem .1rem;
+    width: 20.4rem;
+}
+
+form .action {
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+form .action input[type="submit"] {
+    padding: .5rem 1rem;
+}
+
+.caregivers-list {
+    margin-bottom: 2rem;
+}
+
+
+ /* Utilituies */
+
+ .text-center {
+     text-align: center;
+ }
