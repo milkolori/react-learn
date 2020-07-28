@@ -1,17 +1,35 @@
 import React from 'react';
 import { Link} from "react-router-dom";
+import { caregiverAssignmentChanged } from './caregiversSlice'
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 function CaregiversListItem(props) {
+    const dispatch = useDispatch();
+
+    const coaches = useSelector(state => state.coaches);
+
     const handleUnassign = (event) => {
         event.preventDefault();
-        props.onChangeCaregiverAssignment(props.caregiver.id, null);
+        dispatch(
+            caregiverAssignmentChanged({
+                id: props.caregiver.id,
+                assigneTo: null
+            })
+        );
     };
     const handleAssign = (event) => {
         event.preventDefault();
-        props.onChangeCaregiverAssignment(props.caregiver.id, event.target.value);
+        dispatch(
+            caregiverAssignmentChanged({
+                id: props.caregiver.id,
+                assigneTo: event.target.value
+            })
+        );
     };
 
-    const coachesOptions = props.coaches.map((coach, index) => {
+    const coachesOptions = coaches.map((coach, index) => {
         return <option key={index} value={coach}>{coach}</option>;
     });
     const action = (

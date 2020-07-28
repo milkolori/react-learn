@@ -1,21 +1,21 @@
 import React from 'react';
 import CaregiversTable from './CaregiversTable';
+import { useSelector } from 'react-redux';
 
 function CaregiversList(props){
+    const unassignedCaregivers = useSelector(state => state.caregivers.filter(cg => !cg.coach));
+    const assignedCaregivers = useSelector(state => state.caregivers.filter(cg => cg.coach));
+
     return (
         <div className="content">
             <h1>Caregivers</h1>
             <CaregiversTable 
                 listName="Unssigned Caregivers" 
-                caregivers={props.unassignedCaregivers}
-                onChangeCaregiverAssignment={props.onChangeCaregiverAssignment}
-                coaches={props.coaches}></CaregiversTable>
+                caregivers={unassignedCaregivers}></CaregiversTable>
             
             <CaregiversTable 
                 listName="Assigned Caregivers" 
-                caregivers={props.assignedCaregivers}
-                onChangeCaregiverAssignment={props.onChangeCaregiverAssignment}
-                coaches={props.coaches}></CaregiversTable>
+                caregivers={assignedCaregivers}></CaregiversTable>
         </div>
     );
 }

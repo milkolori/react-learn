@@ -3,12 +3,11 @@ import CaregiversListItem from './CaregiversListItem';
 
 function CaregiversTable(props){
 
+
     const caregiverRows = props.caregivers.map((caregiver) => {
         return (<CaregiversListItem
                     key={caregiver.id} 
-                    caregiver={caregiver} 
-                    onChangeCaregiverAssignment={props.onChangeCaregiverAssignment}
-                    coaches={props.coaches}></CaregiversListItem>);
+                    caregiver={caregiver}></CaregiversListItem>);
     });
     const emptyRow = <tr key={0}><td colSpan="6" className="text-center">No caregivers in this list</td></tr>;
     const tableRows = caregiverRows.length > 0 ? caregiverRows : [emptyRow];

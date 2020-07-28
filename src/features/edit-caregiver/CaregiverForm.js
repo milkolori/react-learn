@@ -3,6 +3,8 @@ import {
     Link,
     useHistory
   } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { caregiverUpdated } from '../caregiver-list/caregiversSlice';
 
 // ####### Caregiver Details component #######
 function CaregiverForm(props){
@@ -22,11 +24,16 @@ function CaregiverForm(props){
         if(props.caregiver) {
             setCaregiver(props.caregiver);
         }
-    }, props.caregiver)
+    }, props.caregiver);
+
+    const states = useSelector(state => state.states);
+    const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.onCaregiverSave(caregiver);
+        dispatch(
+            caregiverUpdated(caregiver)
+        );
         history.push('/');
     };
 
@@ -39,7 +46,7 @@ function CaregiverForm(props){
         setCaregiver(updatedCaregiver);
       }
 
-    const stateOptions = props.states.map((state) => {
+    const stateOptions = states.map((state) => {
         return <option key={state.id} value={state.id}>{state.name}</option>
     });
 
